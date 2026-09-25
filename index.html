@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lestari — Gerakan Konservasi Lingkungan</title>
+  <meta name="description" content="Lestari adalah gerakan konservasi lingkungan yang mengajak semua orang menjaga alam lewat aksi nyata: menanam pohon, bersih-bersih, dan edukasi.">
+
+  <!-- =============================================================
+       FONT & TAILWIND
+       - Google Font "Plus Jakarta Sans" untuk tipografi yang ramah.
+       - TailwindCSS Play CDN, dikonfigurasi lewat <script>
+         agar semua pengaturan tambahan (font) terpusat di sini.
+       ============================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Konfigurasi Tailwind: pakai font Plus Jakarta Sans sebagai font utama.
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- CSS tambahan untuk styling yang tidak mungkin dilakukan murni lewat utility class. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-stone-50 font-sans text-stone-800 antialiased">
+
+  <!-- =============================================================
+       NAVBAR
+       - Kiri: judul website "Lestari".
+       - Tepat 2 link nav menuju section: Mengapa & Program.
+       - 1 tombol CTA menonjol "Dukung Sekarang" menuju #program.
+       - Fixed + backdrop-blur agar tetap terlihat saat di-scroll.
+       ============================================================= -->
+  <nav id="navbar" class="fixed inset-x-0 top-0 z-50 border-b border-stone-200/70 bg-white/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <!-- Judul website di sisi kiri -->
+      <a href="#beranda" class="flex items-center gap-2 text-xl font-extrabold tracking-tight text-emerald-700">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-emerald-600 text-white">
+          <!-- Ikon daun sederhana sebagai logo -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+            <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .75.75v10.126l1.72-1.72a.75.75 0 0 1 1.06 1.06L8.75 18.56A.75.75 0 0 1 7.5 18.75V5.25A.75.75 0 0 1 8.75 4.5H9Zm5.25 0a.75.75 0 0 1 .75.75v10.126l1.72-1.72a.75.75 0 0 1 1.06 1.06l-2.53 2.53a.75.75 0 0 1-1.06 0l-2.53-2.53a.75.75 0 0 1 1.06-1.06l1.72 1.72V5.25a.75.75 0 0 1 .75-.75h1Z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+        Lestari
+      </a>
+
+      <!-- Tombol hamburger, hanya tampil di layar kecil (mobile) -->
+      <button id="menu-toggle" class="rounded-lg p-2 text-stone-700 transition hover:bg-stone-100 lg:hidden" aria-label="Buka menu navigasi">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+        </svg>
+      </button>
+
+      <!-- Link navigasi + tombol CTA -->
+      <div id="nav-menu" class="hidden items-center gap-6 lg:flex">
+        <!-- Tepat 2 link navigasi -->
+        <a href="#mengapa" class="text-sm font-semibold text-stone-600 transition hover:text-emerald-700">Mengapa Ini Penting</a>
+        <a href="#program" class="text-sm font-semibold text-stone-600 transition hover:text-emerald-700">Program</a>
+        <!-- Tombol CTA yang menonjol -->
+        <a href="#program" class="rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-700">Dukung Sekarang</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============================================================
+       HERO (Halaman Utama)
+       - Judul utama sesuai tema konservasi.
+       - Sub-judul singkat (1–2 kalimat).
+       - Minimal 1 gambar pendukung tema (wajib) + atribut alt.
+       - Minimal 1 tombol CTA menuju section lain.
+       ============================================================= -->
+  <header id="beranda" class="relative overflow-hidden pt-32 pb-16">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
+      <!-- Kolom teks -->
+      <div class="reveal">
+        <span class="inline-flex items-center gap-2 rounded-full bg-lime-200 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-800">
+          <span class="h-2 w-2 rounded-full bg-emerald-600"></span>
+          Gerakan Konservasi
+        </span>
+
+        <!-- Headline utama -->
+        <h1 class="mt-6 text-4xl font-extrabold leading-tight text-stone-900 sm:text-5xl">
+          Selamatkan Alam, <span class="text-emerald-600">Mulai dari Langkah Kecil</span>
+        </h1>
+
+        <!-- Sub-judul / deskripsi singkat -->
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-stone-600">
+          Alam yang sehat adalah rumah kita bersama. Lewat aksi sederhana — menanam pohon, membersihkan lingkungan, dan berbagi pengetahuan — kita bisa menjaga bumi tetap lestari untuk generasi mendatang.
+        </p>
+
+        <!-- Tombol aksi menuju section lain -->
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="#program" class="rounded-full bg-emerald-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-700">Lihat Program Kami</a>
+          <a href="#mengapa" class="text-sm font-bold text-emerald-700 underline-offset-4 transition hover:underline">Cari tahu alasannya →</a>
+        </div>
+
+        <!-- Statistik singkat sebagai penguat pesan -->
+        <div class="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-stone-200 pt-6">
+          <div>
+            <p class="text-2xl font-extrabold text-emerald-600">1.000+</p>
+            <p class="text-xs font-medium text-stone-500">Pohon tertanam</p>
+          </div>
+          <div>
+            <p class="text-2xl font-extrabold text-emerald-600">25+</p>
+            <p class="text-xs font-medium text-stone-500">Aksi bersih-bersih</p>
+          </div>
+          <div>
+            <p class="text-2xl font-extrabold text-emerald-600">40+</p>
+            <p class="text-xs font-medium text-stone-500">Sekolah mitra</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom gambar: sumber gambar dari Unsplash (bebas royalti) -->
+      <div class="relative">
+        <div class="absolute -inset-4 -z-10 rotate-2 rounded-3xl bg-lime-200/70"></div>
+        <img
+          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1400&auto=format&fit=crop"
+          alt="Sinar matahari menembus dedaunan hutan yang hijau dan asri"
+          class="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"
+        >
+        <!-- Sumber gambar: https://unsplash.com/photos/1441974231531-c6227db76b6e (Unsplash) -->
+        <div class="absolute -bottom-5 left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-3.5 shadow-xl">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-emerald-100 text-xl">🌱</span>
+          <div>
+            <p class="text-sm font-bold text-stone-900">Bumi Sehat, Masa Depan Cerah</p>
+            <p class="text-xs text-stone-500">Ikut berkontribusi hari ini</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       SECTION 1 — MENGAPA INI PENTING (#mengapa)
+       - Judul + paragraf deskripsi penjelas (wajib).
+       - 3 kartu masalah konservasi, masing-masing disertai teks.
+       - Tata letak tidak simetris (kolom gambar kiri, teks kanan).
+       ============================================================= -->
+  <section id="mengapa" class="scroll-mt-24 py-20">
+    <div class="mx-auto max-w-6xl px-5">
+
+      <!-- Judul & deskripsi section -->
+      <div class="max-w-2xl reveal">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-600">Kenapa Ini Penting</span>
+        <h2 class="mt-3 text-3xl font-extrabold text-stone-900 sm:text-4xl">Bumi butuh uluran tangan kita</h2>
+        <p class="mt-4 text-base leading-relaxed text-stone-600">
+          Setiap tahun, jutaan ton sampah berakhir di laut, ribuan hektare hutan hilang, dan suhu bumi terus naik. Kerusakan ini bukanlah takdir — melainkan akibat ulah manusia yang bisa diperbaiki jika kita mau bertindak bersama.
+        </p>
+      </div>
+
+      <!-- 3 kartu masalah (grid) dengan ikon + teks penjelas -->
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <!-- Kartu 1: sampah plastik -->
+        <article class="reveal rounded-3xl bg-white p-7 shadow-sm ring-1 ring-stone-200/80 transition hover:-translate-y-1 hover:shadow-lg">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-sky-100 text-2xl">♻️</span>
+          <h3 class="mt-5 text-xl font-bold text-stone-900">Sampah Plastik</h3>
+          <p class="mt-3 text-sm leading-relaxed text-stone-600">
+            Indonesia termasuk penghasil sampah plastik di laut terbesar di dunia. Plastik butuh ratusan tahun untuk terurai dan mengancam biota laut yang kita konsumsi.
+          </p>
+        </article>
+
+        <!-- Kartu 2: deforestasi -->
+        <article class="reveal rounded-3xl bg-white p-7 shadow-sm ring-1 ring-stone-200/80 transition hover:-translate-y-1 hover:shadow-lg">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-emerald-100 text-2xl">🌳</span>
+          <h3 class="mt-5 text-xl font-bold text-stone-900">Hutan yang Menyusut</h3>
+          <p class="mt-3 text-sm leading-relaxed text-stone-600">
+            Alih fungsi lahan dan penebangan liar mengurangi paru-paru dunia. Padahal hutan menyerap karbon dan menjadi rumah bagi keanekaragaman hayati Indonesia.
+          </p>
+        </article>
+
+        <!-- Kartu 3: perubahan iklim -->
+        <article class="reveal rounded-3xl bg-white p-7 shadow-sm ring-1 ring-stone-200/80 transition hover:-translate-y-1 hover:shadow-lg">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-amber-100 text-2xl">🌡️</span>
+          <h3 class="mt-5 text-xl font-bold text-stone-900">Perubahan Iklim</h3>
+          <p class="mt-3 text-sm leading-relaxed text-stone-600">
+            Suhu global meningkat dan cuaca makin ekstrem, dari banjir hingga kekeringan. Perubahan dimulai dari gaya hidup kita yang lebih ramah terhadap bumi.
+          </p>
+        </article>
+      </div>
+
+      <!-- Blok konten tidak simetris: gambar kiri, teks kanan -->
+      <div class="mt-16 grid items-center gap-10 lg:grid-cols-2">
+        <img
+          src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop"
+          alt="Pegunungan dan hutan berkabut yang masih alami dan hijau"
+          class="aspect-[5/4] w-full rounded-3xl object-cover shadow-xl"
+        >
+        <!-- Sumber gambar: https://unsplash.com/photos/1470071459604-3b5ec3a7fe05 (Unsplash) -->
+
+        <div>
+          <h3 class="text-2xl font-extrabold text-stone-900 sm:text-3xl">Konservasi adalah investasi masa depan</h3>
+          <p class="mt-4 text-base leading-relaxed text-stone-600">
+            Mengembalikan keseimbangan alam tidak selalu harus besar-besaran. Satu pohon yang ditanam, satu kantong sampah yang dipungut, dan satu kelas yang diedukasi — semua itu berharga bila dilakukan secara konsisten dan bersama-sama.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3 text-sm text-stone-700">
+              <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700 font-bold">✓</span>
+              Menjaga ketersediaan air dan udara bersih untuk semua makhluk hidup.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-stone-700">
+              <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700 font-bold">✓</span>
+              Melindungi flora dan fauna khas Indonesia dari kepunahan.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-stone-700">
+              <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700 font-bold">✓</span>
+              Mewariskan lingkungan yang layak huni bagi anak dan cucu kita.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SECTION 2 — PROGRAM & KEGIATAN (#program)
+       - Judul + paragraf deskripsi penjelas (wajib).
+       - Daftar minimal 3 program dalam bentuk grid / card.
+       - Latar hijau tua untuk kontras dengan section sebelumnya.
+       ============================================================= -->
+  <section id="program" class="scroll-mt-16 bg-emerald-950 py-20 text-white">
+    <div class="mx-auto max-w-6xl px-5">
+
+      <!-- Judul & deskripsi section -->
+      <div class="max-w-2xl reveal">
+        <span class="text-xs font-bold uppercase tracking-widest text-lime-400">Program & Kegiatan</span>
+        <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Mari bergerak lewat aksi nyata</h2>
+        <p class="mt-4 text-base leading-relaxed text-emerald-100/90">
+          Lestari menjalankan tiga program unggulan yang melibatkan siapa saja, mulai dari pelajar hingga warga umum. Serentak namun sederhana, semua aksi dilakukan dengan pendampingan relawan terlatih.
+        </p>
+      </div>
+
+      <!-- Grid minimal 3 program (card) -->
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <!-- Program 1 -->
+        <article class="reveal rounded-3xl bg-white/10 p-7 ring-1 ring-white/10 transition hover:bg-white/15">
+          <span class="text-4xl">🌱</span>
+          <h3 class="mt-4 text-xl font-bold">Gerakan Tanam 1.000 Pohon</h3>
+          <p class="mt-3 text-sm leading-relaxed text-emerald-100/85">
+            Menanam pohon lokal di lahan kritis bersama komunitas. Setiap partisipan turut merawat hingga pohon tumbuh besar dan dicatat di peta penanaman daring.
+          </p>
+        </article>
+
+        <!-- Program 2 -->
+        <article class="reveal rounded-3xl bg-white/10 p-7 ring-1 ring-white/10 transition hover:bg-white/15">
+          <span class="text-4xl">🗑️</span>
+          <h3 class="mt-4 text-xl font-bold">Bersih-Bersih Pantai & Sungai</h3>
+          <p class="mt-3 text-sm leading-relaxed text-emerald-100/85">
+            Aksi gotong royong memungut sampah di pesisir dan bantaran sungai, dilanjutkan pemilahan sampah serta edukasi pengelolaan limbah bagi warga sekitar.
+          </p>
+        </article>
+
+        <!-- Program 3 -->
+        <article class="reveal rounded-3xl bg-white/10 p-7 ring-1 ring-white/10 transition hover:bg-white/15">
+          <span class="text-4xl">📚</span>
+          <h3 class="mt-4 text-xl font-bold">Edukasi Lingkungan Sekolah</h3>
+          <p class="mt-3 text-sm leading-relaxed text-emerald-100/85">
+            Pelatihan dan sesi belajar menyenangkan tentang daur ulang, hemat energi, dan cinta lingkungan bagi siswa sekolah dasar dan menengah.
+          </p>
+        </article>
+      </div>
+
+      <!-- Ajakan / CTA penutup section menuju footer -->
+      <div class="mt-14 flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-r from-emerald-700 to-emerald-600 px-8 py-10 text-center">
+        <h3 class="text-2xl font-extrabold sm:text-3xl">Inisiatif kecil hari ini, bumi lestari besok</h3>
+        <p class="max-w-xl text-sm leading-relaxed text-emerald-50/90">
+          Ingin ikut ambil bagian? Hubungi kami lewat media sosial di bawah dan jadilah relawan, donatur, atau mitra sekolah.
+        </p>
+        <a href="#kontak" class="mt-2 rounded-full bg-lime-400 px-8 py-3.5 text-sm font-extrabold text-emerald-950 shadow-lg shadow-lime-400/25 transition hover:-translate-y-0.5 hover:bg-lime-300">Dukung Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       FOOTER
+       - Nama judul website.
+       - Visi-misi singkat (opsional).
+       - 3 informasi media sosial (Instagram, YouTube, TikTok).
+       - Hak cipta / nama pembuat.
+       ============================================================= -->
+  <footer id="kontak" class="scroll-mt-24 bg-stone-900 pt-16 pb-8 text-stone-300">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="grid gap-12 md:grid-cols-3">
+
+        <!-- Kolom 1: nama website + visi-misi -->
+        <div>
+          <a href="#beranda" class="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-emerald-600 text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .75.75v10.126l1.72-1.72a.75.75 0 0 1 1.06 1.06L8.75 18.56A.75.75 0 0 1 7.5 18.75V5.25A.75.75 0 0 1 8.75 4.5H9Zm5.25 0a.75.75 0 0 1 .75.75v10.126l1.72-1.72a.75.75 0 0 1 1.06 1.06l-2.53 2.53a.75.75 0 0 1-1.06 0l-2.53-2.53a.75.75 0 0 1 1.06-1.06l1.72 1.72V5.25a.75.75 0 0 1 .75-.75h1Z" clip-rule="evenodd"/>
+              </svg>
+            </span>
+            Lestari
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-stone-400">
+            <strong class="font-bold text-stone-200">Visi:</strong> mewujudkan lingkungan yang lestari dan masyarakat yang sadar menjaga alam.
+          </p>
+          <p class="mt-3 max-w-xs text-sm leading-relaxed text-stone-400">
+            <strong class="font-bold text-stone-200">Misi:</strong> menanam pohon, membersihkan lingkungan, dan mengedukasi generasi muda lewat aksi bersama.
+          </p>
+        </div>
+
+        <!-- Kolom 2: navigasi cepat -->
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest text-white">Navigasi</h4>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#beranda" class="transition hover:text-lime-400">Beranda</a></li>
+            <li><a href="#mengapa" class="transition hover:text-lime-400">Mengapa Ini Penting</a></li>
+            <li><a href="#program" class="transition hover:text-lime-400">Program & Kegiatan</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: media sosial (pilih 3 dari 4: Instagram, YouTube, TikTok) -->
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest text-white">Ikuti Kami</h4>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 transition hover:text-lime-400">
+                <span class="grid h-9 w-9 place-items-center rounded-full bg-white/10">📸</span> Instagram
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 transition hover:text-lime-400">
+                <span class="grid h-9 w-9 place-items-center rounded-full bg-white/10">▶️</span> YouTube
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 transition hover:text-lime-400">
+                <span class="grid h-9 w-9 place-items-center rounded-full bg-white/10">🎵</span> TikTok
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris hak cipta -->
+      <div class="mt-14 border-t border-white/10 pt-6 text-center text-xs text-stone-500">
+        &copy; 2026 Lestari &mdash; Dibuat dengan ♥ untuk Bumi Indonesia.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================================
+       SCRIPT (JavaScript)
+       - Membuka/menutup menu navigasi di layar mobile.
+       - Animasi muncul (fade-in) saat elemen masuk layar.
+       ============================================================= -->
+  <script>
+    // 1) Toggle menu mobile saat tombol hamburger diklik.
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("hidden");
+      navMenu.classList.toggle("flex");
+      navMenu.classList.toggle("flex-col");
+      navMenu.classList.toggle("items-center");
+    });
+
+    // 2) Tutup menu mobile otomatis setelah salah satu link diklik.
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.add("hidden");
+        navMenu.classList.remove("flex", "flex-col", "items-center");
+      });
+    });
+
+    // 3) Animasi fade-in sederhana menggunakan IntersectionObserver.
+    const revealables = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealables.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

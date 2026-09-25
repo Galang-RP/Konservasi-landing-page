@@ -1,0 +1,81 @@
+/* =========================================================
+   style.css — styling tambahan untuk landing page "Lestari"
+   Sebagian besar styling memakai utility class Tailwind di
+   index.html. File ini hanya berisi hal yang tidak praktis
+   dikerjakan murni lewat utility class.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Dasar: font utama & warna latar default.
+   Tailwind sudah memuat font Plus Jakarta Sans via config,
+   di sini kami beri fallback di level CSS.
+   --------------------------------------------------------- */
+html,
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ---------------------------------------------------------
+   Navigasi smooth saat mengklik link anchor.
+   scroll-padding-top memberi ruang agar judul section
+   tidak tertutup navbar yang fixed di atas.
+   --------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ---------------------------------------------------------
+   Warna seleksi teks agar selaras dengan palet hijau tema.
+   --------------------------------------------------------- */
+::selection {
+  background-color: #bef264; /* lime-300 */
+  color: #1c1917;            /* stone-900 */
+}
+
+/* ---------------------------------------------------------
+   Scrollbar kustom (Webkit / Blink): aksen hijau emerald.
+   --------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f4;      /* stone-100 */
+}
+::-webkit-scrollbar-thumb {
+  background: #059669;      /* emerald-600 */
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #047857;      /* emerald-700 */
+}
+
+/* ---------------------------------------------------------
+   Animasi kemunculan (fade-in + slide ke atas).
+   Elemen dengan class .reveal akan disembunyikan
+   sampai terlihat di layar (dikontrol JavaScript
+   lewat IntersectionObserver di index.html).
+   --------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------
+   Hormati pengaturan "kurangi gerakan" pada perangkat
+   dengan preferensi aksesibilitas reduce-motion.
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
